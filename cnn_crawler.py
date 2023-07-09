@@ -14,7 +14,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         usage='python cnn_crawler.py --category world --page-limit 5 --output cnn_news.json'
     )
-    parser.add_argument('--category', type=str, choices=category, help='Category of the news')
+    parser.add_argument('--category', type=str, choices=category, help='Category of the news', required=True)
     parser.add_argument('--page-limit', type=int, default=5, help='Number of pages to crawl')
     parser.add_argument('--output', type=str, default='cnn_news.json', help='Output file name')
     args = parser.parse_args()
@@ -53,10 +53,6 @@ def parse_other_links(soup):
 
 args = get_args()
 max_pages = args.page_limit
-
-# check if the category is not set
-if args.category is None:
-    raise ValueError("Category is not set, please use -h or --help to see the usage")
 
 print(f"Parsing {args.category} news.... ")
 res = requests.get(f'https://edition.cnn.com/{args.category}')

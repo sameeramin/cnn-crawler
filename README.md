@@ -24,7 +24,6 @@ python cnn_crawler.py --category world --page-limit 5 --output cnn_news.json
 ```
 
 ## Arguments
-- `--category`: The category of the news to crawl. The default value is `world`.
+- `--category` (required): The category of the news to crawl.
 - `--page-limit`: The number of pages to crawl. The default value is `5`.
 - `--output`: The output file name. The default value is `cnn_news.json`.
-
